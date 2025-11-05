@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Autenticação{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+
+  <body>
+    <div class="main_login">
+      <div class="left_login">
+        <h1 id="typewriter_effect">Aqui a sua ideia ganha VIDA!</h1>
+        <img
+          src="{% static 'images/Innovation.gif' %}"
+          class="left_login_image"
+          alt="Animação Foguete"
+        />
+      </div>
+
+      <div class="right_login">
+        <div class="card_login">
+          {% block content %}
+          <!-- Conteúdo específico de cada página -->
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

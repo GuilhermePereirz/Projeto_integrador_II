@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ produto.nome }}</title>
+
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+
+    <!-- Ícones e fontes -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        background-color: #201b2c;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 9%;
+        background-color: transparent;
+      }
+
+      .logo {
+        font-size: 25pt;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .navlist {
+        display: flex;
+        gap: 40px;
+      }
+
+      .navlist a {
+        color: #fff;
+        font-weight: 600;
+        font-size: 12pt;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent;
+      }
+
+      .navlist a:hover {
+        border-bottom: 2px solid #fff;
+      }
+
+      #logout_button {
+        color: #863cff;
+      }
+
+      .detalhes-container {
+        max-width: 1100px;
+        margin: 160px auto 60px;
+        display: flex;
+        gap: 50px;
+        align-items: flex-start;
+        padding: 0 20px;
+        flex-wrap: wrap;
+      }
+
+      .detalhes-imagem {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .detalhes-imagem img {
+        width: 100%;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .detalhes-info {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .detalhes-info h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .detalhes-info p {
+        font-size: 16px;
+        margin-bottom: 12px;
+        line-height: 1.6;
+      }
+
+      .whatsapp-button {
+        margin-top: 30px;
+      }
+
+      .whatsapp-button button {
+        background-color: #25d366;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .whatsapp-button button:hover {
+        background-color: #1da851;
+      }
+
+      @media (max-width: 768px) {
+        .detalhes-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .navlist {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo">Breguenarts</a>
+      <ul class="navlist">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Portfólio</a></li>
+        <li><a href="#">Contatos</a></li>
+        <li><a href="#" id="logout_button">Sair</a></li>
+      </ul>
+    </header>
+
+    <div class="detalhes-container">
+      <div class="detalhes-imagem">
+        {% if produto.imagem %}
+        <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" />
+        {% endif %}
+      </div>
+      <div class="detalhes-info">
+        <h2>{{ produto.nome }}</h2>
+        <p><strong>Categoria:</strong> {{ produto.categoria.nome }}</p>
+        <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+        <p><strong>Preço:</strong> R$ {{ produto.preco|floatformat:2 }}</p>
+
+        <div class="whatsapp-button">
+          <a
+            href="https://wa.me/55SEUNUMERO?text=Olá, quero comprar o produto {{ produto.nome }}"
+            target="_blank"
+          >
+            <button>Comprar pelo WhatsApp</button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/home.js' %}"></script>
+  </body>
+</html>

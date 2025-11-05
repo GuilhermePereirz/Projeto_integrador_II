@@ -1,0 +1,29 @@
+{% extends 'bases/base_admin_produto.html' %}
+{% load static %}
+
+{% block title %}Editar Produtos{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+
+<div class="form-container">
+  <h2>Editar Produto</h2>
+
+  <a href="{% url 'gestao_produtos' %}" class="voltar">← Produtos Cadastrados</a>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="botao-acao">Salvar</button>
+  </form>
+
+  <div class="botoes-navegacao">
+    <a href="javascript:history.back()">
+      <button class="botao-voltar">← Voltar</button>
+    </a>
+    <a href="{% url 'painel_admin' %}">
+      <button class="botao-painel">🏠 Painel de Controle</button>
+    </a>
+  </div>
+</div>
+{% endblock %}

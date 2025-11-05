@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Administrativo</title>
+
+    <!-- Estilo principal -->
+    <link rel="stylesheet" href="{% static 'css/painel_admin.css' %}" />
+
+    <!-- Boxicons e Remixicons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+  "
+>
+  <!-- LOGO centralizado -->
+  <div style="flex: 1; text-align: left;">
+    <span
+      style="
+        font-size: 50px;
+        font-weight: 700;
+        color: black;
+        letter-spacing: 1px;
+      "
+      >Breguenarts</span
+    >
+  </div>
+
+  <!-- Botão sair à direita -->
+  <form method="post" action="{% url 'logout' %}" style="margin: 0">
+    {% csrf_token %}
+    <button
+      type="submit"
+      style="
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 10px #863cff;
+        font-family: 'Poppins', sans-serif;
+      "
+    >
+      Sair
+    </button>
+  </form>
+</header>
+
+    <section class="display_image">
+      <div class="display_image_text">
+        <h1>Painel Administrativo</h1>
+        <p>Utilize os botões ao lado para navegar</p>
+        <p>Bem-vindo, {{ user.username }}!</p>
+      </div>
+      <div class="display_image_buttons">
+      <div class="grid-botoes">
+  <a href="/admin/">
+    <button class="btn">
+      <i class='bx bx-cog'></i>
+      <span>Painel Django</span>
+    </button>
+  </a>
+  <a href="{% url 'gestao_produtos' %}">
+    <button class="btn">
+      <i class='bx bx-package'></i>
+      <span>Produtos</span>
+    </button>
+  </a>
+  <a href="{% url 'cadastrar_produto' %}">
+    <button class="btn">
+      <i class='bx bx-plus-circle'></i>
+      <span>Adicionar</span>
+    </button>
+  </a>
+  <a href="{% url 'gestao_categorias' %}">
+    <button class="btn">
+      <i class='bx bx-category'></i>
+      <span>Categorias</span>
+    </button>
+  </a>
+  <a href="{% url 'lista_produtos' %}">
+    <button class="btn">
+      <i class='bx bx-show'></i>
+      <span>Ver Produtos</span>
+    </button>
+  </a>
+  <a href="{% url 'home' %}">
+    <button class="btn">
+      <i class='bx bx-home'></i>
+      <span>Home</span>
+    </button>
+  </a>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/painel_admin.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Produtos</title>
+
+    <!-- Estilos principais -->
+    <link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+
+    <!-- Ícones e fontes -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        background-color: #201b2c;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 9%;
+        background-color: transparent;
+      }
+
+      .logo {
+        font-size: 25pt;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .navlist {
+        display: flex;
+        gap: 40px;
+      }
+
+      .navlist a {
+        color: #fff;
+        font-weight: 600;
+        font-size: 12pt;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid transparent;
+      }
+
+      .navlist a:hover {
+        border-bottom: 2px solid #fff;
+      }
+
+      #logout_button {
+        color: #863cff;
+      }
+
+      section {
+        padding: 140px 10% 60px;
+      }
+
+      h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+
+      .grid-produtos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .produto-box {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .produto-box:hover {
+        transform: scale(1.03);
+      }
+
+      .produto-imagem {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 2px solid #ccc;
+      }
+
+      .produto-box h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .produto-box p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 15px;
+      }
+
+      .botao-acao {
+        background-color: #7e57c2;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(126, 87, 194, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .botao-acao:hover {
+        background-color: #9575cd;
+        transform: scale(1.05);
+      }
+
+      .paginacao {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .paginacao a {
+        margin: 0 10px;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .paginacao span {
+        font-size: 14pt;
+        margin: 0 15px;
+      }
+
+      @media (max-width: 768px) {
+        .navlist {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo">Breguenarts</a>
+      <ul class="navlist">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contatos</a></li>
+        <li><a href="#" id="logout_button">Sair</a></li>
+      </ul>
+      <div class="bx bx-menu" id="menu_icon"></div>
+    </header>
+
+    <section>
+      <h2>Lista de Produtos</h2>
+
+      <div class="grid-produtos">
+        {% for produto in produtos %}
+        <div class="produto-box">
+          {% if produto.imagem %}
+          <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="produto-imagem" />
+          {% endif %}
+          <h3>{{ produto.nome }}</h3>
+          <p>R$ {{ produto.preco|floatformat:2 }}</p>
+          <a href="{% url 'detalhes_produto' produto.id %}" class="botao-acao">Clique aqui para saber mais</a>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="paginacao">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="botao-acao">&laquo; Anterior</a>
+        {% endif %}
+        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="botao-acao">Próxima &raquo;</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <script src="{% static 'js/home.js' %}"></script>
+  </body>
+</html>

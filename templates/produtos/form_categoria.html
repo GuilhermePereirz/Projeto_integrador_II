@@ -1,0 +1,31 @@
+{% extends 'bases/base_admin_produto.html' %}
+{% load static %}
+{% block title %}Adicionar / Editar Categoria{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+
+<div class="form-container">
+  <h2>Adicionar / Editar Categoria</h2>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="botao-acao">Salvar</button>
+
+    </form>
+
+  <div class="botoes-navegacao" style="margin-top: 30px;">
+    <a href="{% url 'gestao_categorias' %}">
+      <button class="botao-acao">← Voltar</button>
+    </a>
+    <a href="{% url 'painel_admin' %}">
+      <button class="botao-acao">🏠 Painel de Controle</button>
+    </a>
+  </div>
+
+
+
+</div>
+
+{% endblock %}

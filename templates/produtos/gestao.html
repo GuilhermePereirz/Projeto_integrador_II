@@ -1,0 +1,68 @@
+{% extends 'bases/base_admin_produto.html' %}
+
+{% block title %}Gestão de Produtos{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+    <h2 style="text-align: center">Lista de Produtos</h2>
+
+  <form method="get" class="busca-produtos">
+  <input type="text" name="nome" placeholder="Buscar por nome" />
+  <select name="categoria">
+    <option value="">Todas as categorias</option>
+    {% for cat in categorias %}
+    <option value="{{ cat.id }}">{{ cat.nome }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit" class="botao-acao">Buscar</button>
+</form>
+
+<div class="grid-produtos">
+  {% for produto in produtos %}
+  <div class="produto-box">
+    {% if produto.imagem %}
+    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="produto-imagem" />
+    {% endif %}
+    <div class="produto-info">
+      <h3>{{ produto.nome }}</h3>
+      <p>{{ produto.categoria.nome }}</p>
+    </div>
+   <div class="produto-acoes">
+  <a href="{% url 'editar_produto' produto.id %}" class="botao-acao">Editar</a>
+  <form method="post" action="{% url 'excluir_produto' produto.id %}">
+    {% csrf_token %}
+    <button type="submit" class="botao-acao">Excluir</button>
+  </form>
+</div>
+  </div>
+  {% endfor %}
+  <div class="produto-box novo">
+    <a href="{% url 'cadastrar_produto' %}" class="botao-acao">+</a>
+  </div>
+</div>
+
+
+<div class="paginacao" style="text-align: center; margin-top: 40px">
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}">&laquo; Anterior</a>
+  {% endif %}
+
+  <span
+    >Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span
+  >
+
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">Próxima &raquo;</a>
+  {% endif %}
+</div>
+
+    <div class="botoes-navegacao">
+      <a href="javascript:history.back()">
+        <button class="botao-voltar">← Voltar</button>
+      </a>
+      <a href="{% url 'painel_admin' %}">
+        <button class="botao-painel">🏠 Painel de Controle</button>
+    </div>
+
+{% endblock %}

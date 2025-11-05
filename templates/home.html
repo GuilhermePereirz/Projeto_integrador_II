@@ -1,0 +1,76 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device.width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="static\css\home.css" />
+  </head>
+
+  <!--link boxicons-->
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+	<!--link remixicons-->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+
+	<!--google fonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<section class="display_image">
+	<div class="display_image_text">
+		<h4>Mergulhe nesse mar de ideias</h4>
+		<h1>Estampas personalisadas</h1>
+		<p>Aqui a sua ideia ganha vida! Temos diversos produtos para sublimar a sua arte e será o maior prazer atender o seu desejo!</p>
+		<h5>Confira uma parte do nosso trabalho</h5>
+		<a href="#" id="a_box_shadow">Produtos</a>
+		<a href="#" class="ctaa"><i class="ri-play-fill">Portfolio</i></a>
+	</div>
+
+	<div class="display_image_img">
+		<img src="{% static 'imagens/anime_girl.png' %}" alt="Imagem destaque">
+	</div>
+</section>
+
+<div class="icons">
+	<a href="#"><i class="ri-instagram-line"></i></a>
+	<a href="#"><i class="ri-tiktok-line"></i></a>
+	<a href="#"><i class="ri-whatsapp-line"></i></a>
+</div>
+
+<div class="scroll_down">
+	<a href="#"><i class="ri-arrow-down-s-fill"></i></a>
+</div>
+
+<body>
+
+	<header>
+		<a href="#" class="logo">Breguenarts</a>
+
+		<ul class="navlist">
+			<li><a href="#" class="">Home</a></li>
+			<li><a href="#" class="">Sobre</a></li>
+			<li><a href="#" class="">Produtos</a></li>
+			<li><a href="#" class="">Portfolio</a></li>
+			<li><a href="#" class="">Contatos</a></li>
+			<li><a href="#" class="" id="logout_button">Sair</a></li>
+		</ul>
+
+		<div class="bx bx-menu" id="menu_icon"></div>
+
+	</header>
+
+	<!--link scrollreveal effect-->
+	<script src="https://unpkg.com/scrollreveal"></script>
+
+	<!--link do script do menu lateral-->
+	<script src="static/js/home.js"></script>
+</body>
+
+</html>

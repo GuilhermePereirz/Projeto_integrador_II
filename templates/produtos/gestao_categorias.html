@@ -1,0 +1,41 @@
+{% extends 'bases/base_admin_produto.html' %}
+{% load static %}
+{% block page_title %}Gestão de Categoria de Produtos{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/produtos.css' %}" />
+
+<div style="max-width: 1000px; margin: 0 auto; padding: 40px 20px;">
+  <table class="tabela-categorias" style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background-color: #f0f0f0;">
+      <th style="text-align: center;">Categoria</th>
+      <th style="text-align: center;">Subcategorias</th>
+      <th style="text-align: center;">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cat in categorias %}
+    <tr>
+      <td><strong>{{ cat.nome }}</strong></td>
+      <td><em>Sem subcategorias</em></td>
+      <td style="text-align: center;">
+        <a href="{% url 'editar_categoria' cat.id %}" class="botao-acao" style="margin: 0 4px;">Editar</a>
+        <form method="post" action="{% url 'excluir_categoria' cat.id %}" style="display: inline">
+          {% csrf_token %}
+          <button type="submit" class="botao-acao" style="margin: 0 4px;">Excluir</button>
+        </form>
+        <a href="{% url 'adicionar_subcategoria' %}?categoria_id={{ cat.id }}" class="botao-acao" style="margin: 0 4px;">+ Subcategoria</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+  <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+    <a href="{% url 'adicionar_categoria' %}" class="botao-acao">+ Adicionar Categoria</a>
+    <a href="javascript:history.back()" class="botao-acao">← Voltar</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.main_login{
+    width: 100vw;
+    height: 100vh;
+    background: #201b2c;
+    display: flex;
+    justify-content: center;
+}
+
+.left_login_image{
+    width: 30vw;
+    margin-bottom: 40px;
+    transition: transform 1s ease;
+}
+
+.left_login_image:hover{
+    transform: scale(1.1);
+}
+
+.left_login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left_login > h1{
+    font-size: 3vw;
+    color: #cfb8fe;
+    overflow: hidden;  
+    white-space: nowrap;
+    margin-inline: auto;
+    border-right: 1px solid;
+    animation: typing 3s steps(37) forwards, blink 1s step-end infinite; 
+}
+
+@keyframes typing{
+    from {
+        width: 0;
+    }
+
+    to{
+        width: 85.50%;
+    }
+}
+
+@keyframes blink{
+    50%{
+        border-color: transparent;
+    }
+}
+
+.right_login{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_login{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card_login > h1{
+    color: #9d6dff;
+    font-weight: 800;
+    margin: 0;
+}
+
+.textfield{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+}
+
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #f0ffffde;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textfield > label{
+    color: #f0ffffde;
+    margin-bottom: 10px;
+}
+
+.textfield > input::placeholder{
+    color: #f0ffff94;
+}
+
+.btn_login{
+    width: 100%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #2b134b;
+    background: #9d6dff;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #a782f1;
+    transition: 0.5s;
+}
+
+.btn_login:hover{
+    box-shadow: 0px 10px 40px #a782f1;
+    background: #b58fff;
+    border-radius: 40px;
+    transform: scale(1.1);
+}
+
+#forgot_password{
+    padding-top: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+#forgot_password:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+    color: #9d6dff;
+}
+
+#signup_link{
+    color: #9d6dff;
+    font-size: 12pt;
+    transition: 0.5s;
+}
+
+#signup_p{
+    color: #ffffff;
+    font-size: 12pt;
+}
+
+#signup_link:hover{
+    font-size: 18pt;
+}
+
+@media only screen and (max-width: 950px){
+    .card_login{
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .main_login{
+        flex-direction: column;
+    }
+
+    .left_login > h1{
+        display: none;
+    }
+    .left_login{
+        width: 100%;
+        height: auto;
+    }
+
+    .right_login{
+        width: 100%;
+        height: auto;
+    }
+
+    .left_login_image{
+        width: 50vw;
+    }
+
+    .card_login{
+        width: 90%;
+    }
+}
