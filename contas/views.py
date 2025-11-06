@@ -9,6 +9,13 @@ def painel_admin(request):
 def home(request):
     return render(request, 'home.html')
 
+def sobre(request):
+    return render(request, 'sobre.html')
 
+def contato(request):
+    return render(request, 'contato.html')
+
+def portfolio(request):
+    return render(request, 'portfolio.html')
 
 

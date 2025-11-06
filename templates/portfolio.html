@@ -24,34 +24,26 @@
     <header>
       <a href="#" class="logo">Breguenarts</a>
       <ul class="navlist">
-        <li><a href="{% url 'sobre' %}">Sobre</a></li>
+        <li><a href="{% url 'home' %}">Home</a></li>
+         <li><a href="{% url 'sobre' %}">Sobre</a></li>
         <li><a href="{% url 'lista' %}">Produtos</a></li>
-        <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
-        <li><a href="{% url 'contato' %}">Contatos</a></li>
+        <li><a href="{% url 'contato' %}">Contato</a></li>
         <li><a href="#" id="logout_button">Sair</a></li>
       </ul>
       <div class="bx bx-menu" id="menu_icon"></div>
     </header>
 
     <section class="display_image">
-      <div class="display_image_text">
-        <h4>Mergulhe nesse mar de ideias</h4>
-        <h1>Estampas personalizadas</h1>
-        <p>Aqui a sua ideia ganha vida! Temos diversos produtos para sublimar a sua arte e será o maior prazer atender o seu desejo!</p>
-        <h5>Confira uma parte do nosso trabalho</h5>
-        <a href="{% url 'lista' %}" id="a_box_shadow">Produtos</a>
-        <a href="{% url 'portfolio' %}" class="ctaa"><i class="ri-play-fill"></i> Portfolio</a>
+      <div class="tex">
+
+        <h1>Portifolio</h1>
+
+
       </div>
-      <div class="display_image_img">
-        <img src="{% static 'imagens/anime_girl.png' %}" alt="Imagem destaque">
-      </div>
+
     </section>
 
-    <div class="icons">
-      <a href="#"><i class="ri-instagram-line"></i></a>
-      <a href="#"><i class="ri-tiktok-line"></i></a>
-      <a href="#"><i class="ri-whatsapp-line"></i></a>
-    </div>
+
 
     <div class="scroll_down">
       <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
