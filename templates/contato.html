@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>Contato</title>
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/contato.css' %}" />
 
     <!-- Boxicons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -33,17 +33,47 @@
       <div class="bx bx-menu" id="menu_icon"></div>
     </header>
 
-    <section class="display_image">
-      <div class="tex">
+<section class="section_body">
+    <div class="container">
+        <div class="item">
+            <div class="contact">
+                <div class="first_text">Tem alguma sugestão?</div>
+                <img src="{% static 'imagens/teamwork-illustration-svg-download-png-2371076.webp' %}" alt="" class="image">
+                <div class="social_links">
+                    <span class="second_text">Conecte-se conosco</span>
+                    <ul class="social_media">
+                        <li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+                        <li><a href="#"><i class='bx bxl-instagram'></i></a></li>
+                        <li><a href="#"><i class='bx bxl-whatsapp' ></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="submit_form">
+                <h4 class="third_text text">Fale com a gente</h4>
+                <form action="">
+                    <div class="input_box">
+                        <input type="text" class="input" required>
+                        <label for="">Nome</label>
+                    </div>
+                    <div class="input_box">
+                        <input type="email" class="input" required>
+                        <label for="">E-mail</label>
+                    </div>
+                    <div class="input_box">
+                        <input type="text" class="input" required>
+                        <label for="">Celular</label>
+                    </div>
+                    <div class="input_box">
+                        <textarea name="" id="message" class="input" required cols="30" rows="10"></textarea>
+                        <label for="">Mensagem</label>
+                    </div>
+                    <input type="submit" class="btn" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
 
-        <h1>Contat0</h1>
-
-
-      </div>
-
-    </section>
-
-
+</section>
 
     <div class="scroll_down">
       <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
