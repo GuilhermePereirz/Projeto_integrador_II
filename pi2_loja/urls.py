@@ -18,5 +18,6 @@ urlpatterns = [
     path('contato/', contas_views.contato, name='contato'),
     path('portfolio/', contas_views.portfolio, name='portfolio'),
     path('produtos/', produtos_views.lista_produtos, name='lista'),
+     path('', include('usuarios.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

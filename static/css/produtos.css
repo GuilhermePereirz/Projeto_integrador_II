@@ -1,3 +1,5 @@
+
+
 /* ================================
    RESET GLOBAL E TIPOGRAFIA
 ================================ */
@@ -55,6 +57,7 @@ header {
   border-bottom: 2px solid #000000;
 }
 
+
 #menu_icon {
   color: #000000;
   font-size: 18pt;
@@ -62,6 +65,24 @@ header {
   cursor: pointer;
   display: none;
 }
+
+.menu-link {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 10px #863cff;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.menu-link:hover {
+  background-color: #222;
+  box-shadow: 0 0 12px #a87cff;
+}
+
 /* ================================
    MENU RESPONSIVO (MOBILE)
 ================================ */

@@ -1,0 +1,46 @@
+{% extends 'bases/base.html' %}
+{% block title %}Gestão de Usuários{% endblock %}
+{% block content %}
+
+
+<div style="max-width: 900px; margin: 0 auto;">
+  <h2 style="text-align: center; font-size: 24px; margin-bottom: 50px; color: #333;">
+  Lista de Usuários Cadastrados
+</h2>
+
+  <table class="tabela-categorias" style="width: 100%; border-collapse: collapse;">
+    <thead>
+       <tr style="background-color: #f0f0f0;">
+    <th style="text-align: center; font-size: 16px; font-weight: 700;">Usuário</th>
+    <th style="text-align: center; font-size: 16px; font-weight: 700;">Email</th>
+    <th style="text-align: center; font-size: 16px; font-weight: 700;">Grupo</th>
+    <th style="text-align: center; font-size: 16px; font-weight: 700;">Ações</th>
+  </tr>
+    </thead>
+   <tbody>
+  {% for u in usuarios %}
+  <tr>
+    <td style="text-align: center;"><strong>{{ u.username }}</strong></td>
+    <td style="text-align: center;">{{ u.email }}</td>
+    <td style="text-align: center;">{% if u.groups.first %}{{ u.groups.first.name }}{% else %}-{% endif %}</td>
+    <td style="text-align: center;">
+      <a href="{% url 'editar_usuario' u.id %}" class="botao-acao">Editar</a>
+      <a href="{% url 'excluir_usuario' u.id %}" class="botao-acao">Excluir</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="4" style="text-align: center;">Nenhum usuário cadastrado.</td></tr>
+  {% endfor %}
+</tbody>
+
+  </table>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+  <a href="{% url 'cadastrar_usuario' %}" class="botao-acao">
+    <i class="bx bx-user-plus" style="margin-right: 15px;"></i>
+    Adicionar Usuário
+  </a>
+</div>
+
+</div>
+{% endblock %}

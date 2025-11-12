@@ -49,7 +49,7 @@
   <div style="flex: 1; text-align: left;">
     <span
       style="
-        font-size: 50px;
+        font-size: 28px;
         font-weight: 700;
         color: black;
         letter-spacing: 1px;
@@ -87,23 +87,23 @@
         <p>Bem-vindo, {{ user.username }}!</p>
       </div>
       <div class="display_image_buttons">
-      <div class="grid-botoes">
-  <a href="/admin/">
+     <div class="grid-botoes" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1000px; margin: 40px auto;">
+  <a href="{% url 'listar_usuarios' %}">
     <button class="btn">
-      <i class='bx bx-cog'></i>
-      <span>Painel Django</span>
+      <i class='bx bx-user'></i>
+      <span>Gerenciar Usuários</span>
     </button>
   </a>
   <a href="{% url 'gestao_produtos' %}">
     <button class="btn">
       <i class='bx bx-package'></i>
-      <span>Produtos</span>
+      <span>Produtos Cadastrados</span>
     </button>
   </a>
   <a href="{% url 'cadastrar_produto' %}">
     <button class="btn">
       <i class='bx bx-plus-circle'></i>
-      <span>Adicionar</span>
+      <span>Adicionar Produtos</span>
     </button>
   </a>
   <a href="{% url 'gestao_categorias' %}">
@@ -115,7 +115,7 @@
   <a href="{% url 'lista_produtos' %}">
     <button class="btn">
       <i class='bx bx-show'></i>
-      <span>Ver Produtos</span>
+      <span>Ver Catálogo</span>
     </button>
   </a>
   <a href="{% url 'home' %}">
@@ -127,9 +127,17 @@
 </div>
 
 
+
       </div>
     </div>
   </section>
+
+  <div style="text-align: center; margin-top: 30px;">
+  <a href="/admin/" style="font-size: 11pt; color: #999; text-decoration: none;">
+    Acesso técnico ao painel Django
+  </a>
+</div>
+
 
     <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>

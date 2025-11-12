@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'produtos',
     'contas',
+    'usuarios',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,7 +68,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pi2_loja.wsgi.application'
 
 LOGIN_URL = '/contas/login/'
-LOGIN_REDIRECT_URL = '/contas/painel/'
+LOGIN_REDIRECT_URL = '/usuarios/'
 LOGOUT_REDIRECT_URL = '/contas/login/'
 
 LOGIN_REDIRECT_URL = '/contas/painel/'

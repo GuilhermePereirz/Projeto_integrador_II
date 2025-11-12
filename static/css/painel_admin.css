@@ -67,6 +67,27 @@
   color: #863cff;
 }
 
+.grid-botoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+@media (max-width: 768px) {
+  .grid-botoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-botoes {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 .navlist {
   display: flex;
 }
