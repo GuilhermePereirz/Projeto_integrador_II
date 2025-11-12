@@ -187,7 +187,7 @@ form select {
 }
 
 form button {
-  background-color: #0077cc;
+  background-color: #863cff;;
   color: white;
   border: none;
   padding: 12px;
@@ -198,5 +198,5 @@ form button {
 }
 
 form button:hover {
-  background-color: #005fa3;
+  background-color: #863cff;;
 }
