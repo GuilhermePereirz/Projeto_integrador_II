@@ -67,8 +67,7 @@ body{
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: animate-gradient 2.5s 
-    linear infinite;
+    animation: animate-gradient 2.5s linear infinite;
 }
 
 .portfolio_aligner{
@@ -92,6 +91,5 @@ body{
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
-    /*box-shadow: -1px 2px 7px #008cff, -1px 2px 7px #e100ff;*/
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
 }

@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title>Sobre</title>
 
     <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/sobre.css' %}" />
 
     <!-- Boxicons -->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -16,35 +16,40 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
-      <a href="#" class="logo">Breguenarts</a>
+      <a href="{% url 'home' %}" class="logo">Breguenarts</a>
       <ul class="navlist">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'lista' %}">Produtos</a></li>
         <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
-        <li><a href="{% url 'contato' %}">Contatos</a></li>
-        <!--<li><a href="#" id="logout_button">Sair</a></li> -->
+        <li><a href="{% url 'contato' %}">Contato</a></li>
+        <!--<li><a href="#" id="logout_button">Sair</a></li>-->
       </ul>
       <div class="bx bx-menu" id="menu_icon"></div>
     </header>
 
     <section class="display_image">
-      <div class="tex">
-
-        <h1>Sobre</h1>
-        <p>Aqui a sua ideia ganha vida! Temos diversos produtos para sublimar a sua arte e será o maior prazer atender o seu desejo!</p>
-        <h5>Confira uma parte do nosso trabalho</h5>
-
+      <div class="display_image_text">
+        <h1>Sobre Nós</h1>
+        <p>
+          Breguenarts é uma turminha do balacobaco, os mais profissionais, os mais experientes,
+          os mais pontuais, os irrepreensíveis. Demonstram cada vez mais suas incríveis habilidades
+          criativas, e têm um senso de responsabilidade ENORME.
+          <br>
+          Agora... Se nem eu comprei esse discurso imagina você... Ah! só faz um pedido aí!
+        </p>
+        <a href="{% url 'portfolio' %}" class="ctaa">
+          <i class="ri-play-fill"></i> Portfolio
+        </a>
       </div>
 
+      <div class="display_image_img">
+        <img src="{% static 'imagens/Frente.png' %}" alt="Equipe Breguenarts">
+      </div>
     </section>
-
-
 
     <div class="scroll_down">
       <a href="#"><i class="ri-arrow-down-s-fill"></i></a>
@@ -54,6 +59,6 @@
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <!-- JS do menu -->
-    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/sobre.js' %}"></script>
   </body>
 </html>
