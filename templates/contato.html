@@ -50,26 +50,38 @@
             </div>
             <div class="submit_form">
                 <h4 class="third_text text">Fale com a gente</h4>
-                <form action="">
-                    <div class="input_box">
-                        <input type="text" class="input" required>
-                        <label for="">Nome</label>
-                    </div>
-                    <div class="input_box">
-                        <input type="email" class="input" required>
-                        <label for="">E-mail</label>
-                    </div>
-                    <div class="input_box">
-                        <input type="text" class="input" required>
-                        <label for="">Celular</label>
-                    </div>
-                    <div class="input_box">
-                        <textarea name="" id="message" class="input" required cols="30" rows="10"></textarea>
-                        <label for="">Mensagem</label>
-                    </div>
-                    <input type="submit" class="btn" value="Submit">
-                </form>
-            </div>
+                <form method="post">
+  {% csrf_token %}
+  <div class="input_box">
+    <input type="text" name="nome" class="input" required>
+    <label for="">Nome</label>
+  </div>
+  <div class="input_box">
+    <input type="email" name="email" class="input" required>
+    <label for="">E-mail</label>
+  </div>
+  <div class="input_box">
+    <input type="text" name="celular" class="input" required>
+    <label for="">Celular</label>
+  </div>
+  <div class="input_box">
+    <textarea name="mensagem" class="input" required cols="30" rows="10"></textarea>
+    <label for="">Mensagem</label>
+  </div>
+  <input type="submit" class="btn" value="Enviar">
+  {% if messages %}
+  <div style="text-align:center; margin: 20px auto; color: green; font-weight: bold;">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+</form>
+
+</div>
+
+
         </div>
     </div>
 

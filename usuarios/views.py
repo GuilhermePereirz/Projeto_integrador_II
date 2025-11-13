@@ -1,7 +1,46 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User, Group
-from .forms import UsuarioCreateForm, UsuarioUpdateForm
+from django.utils import timezone
+from datetime import timedelta
+from .models import MensagemContato
+from .forms import UsuarioCreateForm, MensagemContatoForm
+
+
+
+def contato(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        email = request.POST.get('email')
+        celular = request.POST.get('celular')
+        mensagem = request.POST.get('mensagem')
+
+        MensagemContato.objects.create(
+            nome=nome,
+            email=email,
+            celular=celular,
+            mensagem=mensagem
+        )
+        return redirect('contato')  # ou 'home' se quiser voltar para a página inicial
+
+    return render(request, 'contato.html')
+
+
+
+
+def listar_mensagens(request):
+    filtro = request.GET.get("filtro", "todas")
+    mensagens = MensagemContato.objects.all()
+
+    if filtro == "semana":
+        inicio = timezone.now() - timedelta(days=7)
+        mensagens = mensagens.filter(data_envio__gte=inicio)
+    elif filtro == "mes":
+        inicio = timezone.now() - timedelta(days=30)
+        mensagens = mensagens.filter(data_envio__gte=inicio)
+
+    return render(request, "mensagens/listar.html", {"mensagens": mensagens, "filtro": filtro})
+
 
 @login_required
 @permission_required('auth.view_user', raise_exception=True)
